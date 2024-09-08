@@ -14154,6 +14154,116 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
 }
 }
 break
+case 'setkhufu': {
+            if (!XeonTheCreator) return XeonStickOwner()
+            if (text.startsWith('v')) {
+                  khufumennu = text
+                  replygcxeon(mess.done)
+               } else {
+               let msg = generateWAMessageFromContent(m.chat, {
+  viewOnceMessage: {
+    message: {
+        "messageContextInfo": {
+          "deviceListMetadata": {},
+          "deviceListMetadataVersion": 2
+        },
+        interactiveMessage: proto.Message.InteractiveMessage.create({
+          body: proto.Message.InteractiveMessage.Body.create({
+            text: `Hi ${m.pushName}\nPlease click on the button below`
+          }),
+          footer: proto.Message.InteractiveMessage.Footer.create({
+            text: botname
+          }),
+          header: proto.Message.InteractiveMessage.Header.create({
+                ...(await prepareWAMessageMedia({ image : fs.readFileSync('./GlobalMedia/theme/cheemspic.jpg')}, { upload: XeonBotInc.waUploadToServer})), 
+                  title: ``,
+                  gifPlayback: true,
+                  subtitle: ownername,
+                  hasMediaAttachment: false  
+                }),
+          nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+            buttons: [
+              {
+                "name": "single_select",
+                "buttonParamsJson": `{"title":"SELECT MENU TYPE",
+"sections":[{"title":"SELECT THE MENU BELOW",
+"highlight_label":"OWNER'S FAVOURITE",
+"rows":[{"header":"BUTTON + CHANNEL V2",
+"title":"CHOOSE ",
+"description":"BUTTON + CHANNEL V2",
+"id":"${prefix+command} v12"},
+{"header":"BUTTON + CHANNEL",
+"title":"CHOOSE ",
+"description":"BUTTON + CHANNEL",
+"id":"${prefix+command} v11"},
+{"header":"ONLY BUTTON",
+"title":"CHOOSE ",
+"description":"ONLY BUTTON",
+"id":"${prefix+command} v10"},
+{"header":"CHANNEL + FAKE THUMBNAIL V2",
+"title":"CHOOSE ",
+"description":"CHANNEL + FAKE THUMBNAIL V2",
+"id":"${prefix+command} v9"},
+{"header":"CHANNEL + FAKE THUMBNAIL",
+"title":"CHOOSE ",
+"description":"CHANNEL + FAKE THUMBNAIL",
+"id":"${prefix+command} v8"},
+{"header":"FAKE THUMBNAIL + DOCUMENT",
+"title":"CHOOSE ",
+"description":"FAKE THUMBNAIL + DOCUMENT",
+"id":"${prefix+command} v7"},
+{"header":"FAKE PAYMENT",
+"title":"CHOOSE ",
+"description":"FAKE PAYMENT",
+"id":"${prefix+command} v6"},
+{"header":"CALL SCHEDULE",
+"title":"CHOOSE",
+"description":"CALL SCHEDULE",
+"id":"${prefix+command} v5"},
+{"header":"GIF THUMBNAIL",
+"title":"CHOOSE",
+"description":"GIF THUMBNAIL",
+"id":"${prefix+command} v4"},
+{"header":"VIDEO THUMBNAIL",
+"title":"CHOOSE",
+"description":"VIDEO THUMBNAIL",
+"id":"${prefix+command} v3"},
+{"header":"CHANNEL + THUMBNAIL",
+"title":"CHOOSE",
+"description":"CHANNEL + THUMBNAIL",
+"id":"${prefix+command} v2"},
+{"header":"IMAGE THUMBNAIL",
+"title":"CHOOSE",
+"description":"IMAGE THUMBNAIL",
+"id":"${prefix+command} v1"}
+]
+}
+]
+}`
+              }
+           ],
+          }),
+          contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 999,
+                  isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: global.xchannel.jid,
+                  newsletterName: ownername,
+                  serverMessageId: 143
+                }
+                }
+        })
+    }
+  }
+}, { quoted: m })
+
+await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
+  messageId: msg.key.id
+})
+}
+}
+break
 			case 'bc':
             case 'broadcast': {
                if (!XeonTheCreator) return XeonStickOwner()
@@ -16783,280 +16893,13 @@ break
 			break
 			
 			// Menu
-		    case 'menu': case 'help': case 'alive': case 'اوامر': {
+		    case 'menu': case 'قايمه': case 'ليست': {
             const timestampe = speed()
             const latensie = speed() - timestampe
             const a = db.users[sender]
             const me = m.sender
-			const xmenu_oh = `
-╭──❍「 *اهلا يصحبي* 」❍
-├${setv} *اهلا 👋*
-├${setv} *${m.pushName}* 
-├${setv} *${xeonytimewisher} 🥰* 
-╰─┬────❍ ${readmore}
-╭─┴❍「 *الاوامر* 」❍
-│${setv} ${prefix}allmenu
-│${setv} ${prefix}searchmenu
-│${setv} ${prefix}downloadmenu
-│${setv} ${prefix}gamemenu
-│${setv} ${prefix}funmenu
-│${setv} ${prefix}aimenu
-│${setv} ${prefix}groupmenu
-│${setv} ${prefix}ownermenu
-│${setv} ${prefix}convertmenu
-│${setv} ${prefix}listmenu
-│${setv} ${prefix}religionmenu
-│${setv} ${prefix}animemenu
-│${setv} ${prefix}nsfwmenu
-│${setv} ${prefix}randomphotomenu
-│${setv} ${prefix}randomvideomenu
-│${setv} ${prefix}stickermenu
-│${setv} ${prefix}databasemenu
-│${setv} ${prefix}storemenu
-│${setv} ${prefix}stalkermenu
-│${setv} ${prefix}bugmenu
-│${setv} ${prefix}othermenu
-╰──────❍`
-if (typemenu === 'v1') {
-                    XeonBotInc.sendMessage(m.chat, {
-                        image: fs.readFileSync('./khufumedia/cheemspic.jpg'),
-                        caption: xmenu_oh
-                    }, {
-                        quoted: m
-                    })
-                } else if (typemenu === 'v2') {
-                    XeonBotInc.sendMessage(m.chat, {
-                        text: xmenu_oh,
-                        contextInfo: {
-                            externalAdReply: {
-                                showAdAttribution: true,
-                                title: botname,
-                                body: ownername,
-                                thumbnail: fs.readFileSync('./GlobalMedia/theme/cheemspic.jpg'),
-                                sourceUrl: wagc,
-                                mediaType: 1,
-                                renderLargerThumbnail: true
-                            }
-                        }
-                    }, {
-                        quoted: m
-                    })
-                }   if (typemenu === 'v3') {
-                    XeonBotInc.sendMessage(m.chat, {
-                        video: fs.readFileSync('./GlobalMedia/theme/Cheems-bot.mp4'),
-                        caption: xmenu_oh
-                    }, {
-                        quoted: m
-                    })
-                } else if (typemenu === 'v4') {
-                    XeonBotInc.sendMessage(m.chat, {
-                        video: fs.readFileSync('./GlobalMedia/theme/Cheems-bot.mp4'),
-                        caption: xmenu_oh,
-                        gifPlayback: true
-                    }, {
-                        quoted: m
-                    })
-                } else if (typemenu === 'v5') {
-                    XeonBotInc.relayMessage(m.chat, {
-                        scheduledCallCreationMessage: {
-                            callType: "AUDIO",
-                            scheduledTimestampMs: 1200,
-                            title: xmenu_oh
-                        }
-                    }, { quoted: m })
-                } else if (typemenu === 'v6') {
-                    XeonBotInc.relayMessage(m.chat,  {
-                       requestPaymentMessage: {
-                          currencyCodeIso4217: 'INR',
-                          amount1000: '9999999900',
-                          requestFrom: m.sender,
-                          noteMessage: {
-                             extendedTextMessage: {
-                                text: xmenu_oh,
-                                contextInfo: {
-                                   externalAdReply: {
-                                       showAdAttribution: true
-                                   }
-                                }
-                             }
-                          }
-                       }
-                    }, { quoted: m })
-                } else if (typemenu === 'v7') {
-                    XeonBotInc.sendMessage(m.chat, {
-                        document: {
-                           url: 'https://i.ibb.co/2W0H9Jq/avatar-contact.png'
-                        },
-                        caption: xmenu_oh,
-                        mimetype: 'application/zip',
-                        fileName: ownername,
-                        fileLength: "99999999999",
-                        contextInfo: {
-                            externalAdReply: {
-                                showAdAttribution: true,
-                                title: botname,
-                                body: ownername,
-                                thumbnail: fs.readFileSync('./GlobalMedia/theme/cheemspic.jpg'),
-                                sourceUrl: wagc,
-                                mediaType: 1,
-                                renderLargerThumbnail: true
-                            }
-                        }
-                    }, {
-                        quoted: fstatus 
-                    })
-                } else if (typemenu === 'v8') {
-                	XeonBotInc.sendMessage(m.chat, {
-      video: fs.readFileSync('./GlobalMedia/theme/Cheems-bot.mp4'),
-      gifPlayback: true,
-      caption: xmenu_oh,
-      contextInfo: {
-      externalAdReply: {
-      title: botname,
-      body: ownername,
-      thumbnailUrl: 'https://telegra.ph/file/f6119ab1993a2d875843a.jpg',
-      sourceUrl: ``,
-      mediaType: 1,
-      renderLargerThumbnail: true
-      }
-      }}, {
-                        quoted: m
-                    })
-      } else if (typemenu === 'v9') {
-                	XeonBotInc.sendMessage(m.chat, {
-video: fs.readFileSync('./GlobalMedia/theme/Cheems-bot.mp4'),
-caption: xmenu_oh,
-gifPlayback: true,
-contextInfo: {
-forwardingScore: 999,
-isForwarded: true,
-mentionedJid: [sender],
-forwardedNewsletterMessageInfo: {
-newsletterName: ownername,
-newsletterJid: global.xchannel.jid,
-},
-externalAdReply: {
-showAdAttribution: true,
-title: ownername,
-body: botname,
-thumbnailUrl: "https://telegra.ph/file/f6119ab1993a2d875843a.jpg",
-sourceUrl: websitex,
-mediaType: 1,
-renderLargerThumbnail: true
-}
-}
-}, {
-quoted: m
-})
-} else if (typemenu === 'v10') {
-let msg = generateWAMessageFromContent(m.chat, {
-  viewOnceMessage: {
-    message: {
-        "messageContextInfo": {
-          "deviceListMetadata": {},
-          "deviceListMetadataVersion": 2
-        },
-        interactiveMessage: proto.Message.InteractiveMessage.create({
-          body: proto.Message.InteractiveMessage.Body.create({
-            text: ownername
-          }),
-          footer: proto.Message.InteractiveMessage.Footer.create({
-            text: botname
-          }),
-          header: proto.Message.InteractiveMessage.Header.create({
-            title: xmenu_oh,
-            subtitle: themeemoji,
-            hasMediaAttachment: false
-          }),
-          nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-            buttons: [
-              {
-                 "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"قناتي  😆💗\",\"url\":\"https://youtube.com/@khufualmoz3g974\",\"merchant_url\":\"https://www.google.com\"}"
-              },
-              {
-                 "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"Telegram 🌠\",\"url\":\"https://t.me/GlobalTechInc\",\"merchant_url\":\"https://www.google.com\"}"
-              },
-              {
-                 "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"GitHub ID 🎩\",\"url\":\"https://github.com/GlobalTechInfo\",\"merchant_url\":\"https://www.google.com\"}"
-              },
-              {
-                 "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
-              }
-           ],
-          })
-        })
-    }
-  }
-}, { quoted: m })
-
-await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
-  messageId: msg.key.id
-})
-} else if (typemenu === 'v11') {
-let msg = generateWAMessageFromContent(m.chat, {
-        viewOnceMessage: {
-          message: {
-              "messageContextInfo": {
-                "deviceListMetadata": {},
-                "deviceListMetadataVersion": 2
-              },
-              interactiveMessage: proto.Message.InteractiveMessage.create({
-                body: proto.Message.InteractiveMessage.Body.create({
-                  text: xmenu_oh
-                }),
-                footer: proto.Message.InteractiveMessage.Footer.create({
-                  text: botname
-                }),
-                header: proto.Message.InteractiveMessage.Header.create({
-                ...(await prepareWAMessageMedia({ image : fs.readFileSync('./GlobalMedia/theme/cheemspic.jpg')}, { upload: XeonBotInc.waUploadToServer})), 
-                  title: ``,
-                  gifPlayback: true,
-                  subtitle: ownername,
-                  hasMediaAttachment: false  
-                }),
-                nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-                  buttons: [
-             {
-                 "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"قناتي  😆💗\",\"url\":\"https://youtube.com/@khufualmoz3g974\",\"merchant_url\":\"https://www.google.com\"}"
-              },
-              {
-                 "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"Telegram 🌠\",\"url\":\"https://t.me/GlobalTechInc\",\"merchant_url\":\"https://www.google.com\"}"
-              },
-              {
-                 "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"GitHub ID 🎩\",\"url\":\"https://github.com/GlobalTechInfo\",\"merchant_url\":\"https://www.google.com\"}"
-              },
-              {
-                 "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
-              }
-                                  ],
-                }),
-                contextInfo: {
-                  mentionedJid: [m.sender], 
-                  forwardingScore: 999,
-                  isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                  newsletterJid: global.xchannel.jid,
-                  newsletterName: ownername,
-                  serverMessageId: 143
-                }
-              }
-              })
-          }
-        },
-      }, { quoted: m })
-      
-      await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
-        messageId: msg.key.id
-        })
-        } else if (typemenu === 'v12') {
+			const xmenu_oh = `بص يزميلي هدوس علي زرار ال تحت ده وتختار القايمه ال انت عايزها 😍`
+ if (khufumennu === 'v12') {
         	let msg = generateWAMessageFromContent(m.chat, {
   viewOnceMessage: {
     message: {
@@ -17088,7 +16931,7 @@ let msg = generateWAMessageFromContent(m.chat, {
 "rows":[{"header":"جميع الاوامر😎👄",
 "title":"ابعت يصديقي",
 "description":"خوفو ص المزعجين😆💗",
-"id":"${prefix}allmenu"},
+"id":"اوامر"},
 {"header":"اوامر البحث😎👄",
 "title":"ابعت يصديقي",
 "description":"خوفو ص المزعجين😆💗️",
@@ -17172,22 +17015,7 @@ let msg = generateWAMessageFromContent(m.chat, {
 }]
 }`
               },
-              {
-                 "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"قناتي  😆💗\",\"url\":\"https://youtube.com/@khufualmoz3g974\",\"merchant_url\":\"https://www.google.com\"}"
-              },
-              {
-                 "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"Telegram 🌠\",\"url\":\"https://t.me/GlobalTechInc\",\"merchant_url\":\"https://www.google.com\"}"
-              },
-              {
-                 "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"GitHub ID 🎩\",\"url\":\"https://github.com/GlobalTechInfo\",\"merchant_url\":\"https://www.google.com\"}"
-              },
-              {
-                 "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
-	      }
+              
            ],
           }),
           contextInfo: {
@@ -17211,7 +17039,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
 }
 }
 break
-case 'allmenu': {
+case 'اوامر': {
 let xmenu_oh = `
 ╭──❍「 *GREETING* 」❍
 ├${setv} *Hi 👋*
@@ -18127,7 +17955,7 @@ let msg = generateWAMessageFromContent(m.chat, {
 "rows":[{"header":"جميع الاوامر😎👄",
 "title":"ابعت يصديقي",
 "description":"خوفو ص المزعجين😆💗",
-"id":"${prefix}allmenu"},
+"id":"اوامر"},
 {"header":"اوامر البحث😎👄",
 "title":"ابعت يصديقي",
 "description":"خوفو ص المزعجين😆💗️",
@@ -18156,10 +17984,6 @@ let msg = generateWAMessageFromContent(m.chat, {
 "title":"ابعت يصديقي",
 "description":"خوفو ص المزعجين😆💗",
 "id":"${prefix}ownermenu"},
-{"header":"🎲CONVERT MENU🎴",
-"title":"ابعت يصديقي",
-"description":"خوفو ص المزعجين😆💗",
-"id":"${prefix}convertmenu"},
 {"header":"🧣LIST MENU🪢",
 "title":"ابعت يصديقي",
 "description":"خوفو ص المزعجين😆💗",

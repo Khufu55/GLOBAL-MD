@@ -20,7 +20,7 @@ global.botscript = 'https://github.com/GlobalTechInfo/GLOBAL-MD' //script link
 global.packname = "𝑲𝑯𝑼𝑭𝑼 𝑩𝑶𝑻"
 global.author = "خوفو ص المزعجين 😍\n\n+201121968769"
 global.creator = "201121968769@s.whatsapp.net"
-global.xprefix = '.'
+global.xprefix = ''
 global.premium = ["201121968769"] // Premium User
 
 //channel id
@@ -29,8 +29,9 @@ global.xchannel = {
 	}
 
 //bot sett
-global.typemenu = 'v12' // menu type 'v1' => 'v12'
+global.typemenu = 'v1' // menu type 'v1' => 'v12'
 global.typereply = 'v3' // reply type 'v1' => 'v4'
+global.khufumennu = 'v12' // menu type 'v1' => 'v12'
 global.autoblocknumber = '91' //set autoblock country code
 global.antiforeignnumber = '91' //set anti foreign number country code
 
